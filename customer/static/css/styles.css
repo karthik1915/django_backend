@@ -1,0 +1,38 @@
+:root {
+  --background_color: #171717;
+}
+
+@font-face {
+  font-family: "Varela Round";
+  src: url("../fonts/VarelaRound-Regular.ttf");
+}
+
+body {
+  font-family: "Varela Round";
+  background-color: var(--background_color);
+  color: #fff;
+}
+
+.Heading {
+  text-align: center;
+}
+
+nav {
+  float: right;
+}
+
+nav > a {
+  background-color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border: 1px solid white;
+  color: black;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  transition: border-radius 0.3s ease-out;
+  &:hover {
+    background-color: grey;
+    color: whitesmoke;
+    border-radius: 18px;
+  }
+}

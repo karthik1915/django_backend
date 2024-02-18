@@ -1,0 +1,15 @@
+# Exclude virtual environment
+venv/
+
+# Exclude Django migration files
+**/migrations/
+
+# Exclude IDE files
+.vscode/
+.idea/
+
+# Exclude compiled Python files
+*.pyc
+
+# Exclude environment-specific settings files
+*.env
