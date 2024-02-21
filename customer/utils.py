@@ -1,10 +1,15 @@
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from bson import ObjectId
 
-# from pymongo import
+# importing connection string from .env
+load_dotenv()
+mongodb_connection_string = os.getenv("MONGODB_CONNECTION_STRING")
+url = mongodb_connection_string
 
-url = "mongodb+srv://karthikeyanj1915:andiamdude@cluster0.wa9qwbd.mongodb.net/?retryWrites=true&w=majority"
+# function to ping mongodb
 
 
 def PingMongo():
@@ -14,6 +19,8 @@ def PingMongo():
         return True
     except Exception as e:
         return False
+
+# function to fetch all data
 
 
 def fetchalldata(collection_name, dbname="foodapp") -> list:
@@ -71,19 +78,7 @@ def deletemanydocuments(collection_name, data, dbname="foodapp"):
     client = MongoClient(url)
     db = client[dbname]
     collection = db[collection_name]
-
     ids = data
     objids = [ObjectId(id) for id in ids]
-
     filter = {"_id": {"$in": objids}}
-
-    status = collection.delete_many(filter)
-
-
-data = [
-    "65d09d97ac7a3cce955b6d05",
-    "65d09d97ac7a3cce955b6d06",
-    "65d09d985a83206a74609aab",
-    "65d09d985a83206a74609aac",
-]
-print(deletemanydocuments("cocktails", data))
+    collection.delete_many(filter)

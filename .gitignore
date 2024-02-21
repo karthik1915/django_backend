@@ -12,4 +12,4 @@ venv/
 *.pyc
 
 # Exclude environment-specific settings files
-*.env
+# *.env 

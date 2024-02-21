@@ -81,9 +81,9 @@ def deletemanydata(request, collection):
         received = json.loads(request.body)
 
         try:
-            res = utils.deletemanydocuments(collection, received)
+            utils.deletemanydocuments(collection, received)
             return JsonResponse(
-                {"message": "Data deleted successfully", "response": res}, status=201
+                {"message": "Data deleted successfully"}, status=201
             )
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
