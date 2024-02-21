@@ -1,12 +1,14 @@
-from django.urls import path
+from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
     path("", views.indexPage, name="Index"),
     path("ping", views.ping, name="ping server"),
     path("api/data/<str:collection_name>", views.viewdata, name="all data"),
-    path("api/data/insert/<str:collection>", views.insertdatatodb, name="Insert Data"),
-    path("api/data/delete/<str:collection>", views.deletedataindb, name="Delete Data"),
+    path("api/data/insert/<str:collection>",
+         views.insertdatatodb, name="Insert Data"),
+    path("api/data/delete/<str:collection>",
+         views.deletedataindb, name="Delete Data"),
     path(
         "api/data/insertmany/<str:collection>",
         views.insertmanydata,
@@ -17,4 +19,5 @@ urlpatterns = [
         views.deletemanydata,
         name="Delete many data",
     ),
+    re_path(r'^.*$', views.handle_wrong_url),
 ]

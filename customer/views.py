@@ -17,6 +17,14 @@ def ping(request):
     return JsonResponse(message)
 
 
+def handle_wrong_url(request):
+    data = {
+        "message": "check the url bruh",
+        'error': 'Requested URL does not exist'
+    }
+    return JsonResponse(data, status=404)
+
+
 def indexPage(request):
     return render(request, "index.html")
 
